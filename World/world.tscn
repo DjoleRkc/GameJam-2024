@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://cc6k7bnf7ebg1"]
+
+[ext_resource type="Texture2D" uid="uid://bbd66wv5cpaw4" path="res://World/background.png" id="1_1ofok"]
+[ext_resource type="Script" path="res://World/world.gd" id="1_hg0a4"]
+[ext_resource type="PackedScene" uid="uid://txxvcriw0mag" path="res://Player/player.tscn" id="2_q8f51"]
+[ext_resource type="PackedScene" uid="uid://dlkdp6pslaavv" path="res://Player/Drawing/player_attack.tscn" id="4_70e0d"]
+[ext_resource type="PackedScene" uid="uid://ij56ae3mtr2n" path="res://Player/Drawing/Particle/spawn_particle.tscn" id="5_hbcqk"]
+[ext_resource type="AudioStream" uid="uid://bjk6k65gx6740" path="res://Krankšvester - Gaber (Official Video) [music] (mp3cut.net).mp3" id="6_pw8as"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_hg0a4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(807, 428)
+scale = Vector2(0.847917, 0.807407)
+texture = ExtResource("1_1ofok")
+
+[node name="Player" parent="." instance=ExtResource("2_q8f51")]
+position = Vector2(808, 439)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="PlayerAttack" parent="." instance=ExtResource("4_70e0d")]
+
+[node name="spawn_particle" parent="." instance=ExtResource("5_hbcqk")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_pw8as")
+volume_db = -7.87
+autoplay = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

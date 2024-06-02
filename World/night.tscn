@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck63fify7nwxj"]
+
+[ext_resource type="Script" path="res://World/night.gd" id="1_73alh"]
+[ext_resource type="Texture2D" uid="uid://by06o3vmrk2om" path="res://World/Night_background.png" id="1_vaail"]
+[ext_resource type="PackedScene" uid="uid://b8oe0wpm8ta4g" path="res://UI/Inventory/inventory_ui.tscn" id="3_cl7av"]
+
+[node name="night" type="Node2D"]
+script = ExtResource("1_73alh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(808.5, 424)
+scale = Vector2(0.840104, 0.790741)
+texture = ExtResource("1_vaail")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1158.0
+offset_top = 688.0
+offset_right = 1543.0
+offset_bottom = 803.0
+text = "NEXT DAY"
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="InventoryUI" parent="." instance=ExtResource("3_cl7av")]
+offset_left = 476.0
+offset_top = 143.0
+offset_right = 476.0
+offset_bottom = 143.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

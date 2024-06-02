@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwq8du3lk0var"]
+
+[ext_resource type="Script" path="res://movementTest.gd" id="1_rfmca"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cc3tf"]
+size = Vector2(200, 135)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Tester" type="RigidBody2D" parent="."]
+script = ExtResource("1_rfmca")
+
+[node name="Sprite2D" type="Sprite2D" parent="Tester"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tester"]
+position = Vector2(166, 137)
+shape = SubResource("RectangleShape2D_cc3tf")

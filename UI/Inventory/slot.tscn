@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://l356ct4s8f3k"]
+
+[ext_resource type="Script" path="res://UI/Inventory/slot.gd" id="1_yfy2v"]
+[ext_resource type="Texture2D" uid="uid://fcwtyg7q7h5c" path="res://UI/Inventory/inventorySlot.png" id="5_0mv1h"]
+
+[node name="Slot" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yfy2v")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(27, 28)
+scale = Vector2(3.7, 3.8)
+texture = ExtResource("5_0mv1h")
+vframes = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 38.0
+offset_bottom = 36.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="item" type="Sprite2D" parent="CenterContainer/Panel"]
+
+[node name="Label" type="Label" parent="CenterContainer/Panel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 25.0
+offset_right = 36.0
+offset_bottom = 50.0
+text = "0"

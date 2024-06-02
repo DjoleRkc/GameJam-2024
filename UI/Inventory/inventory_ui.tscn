@@ -1,0 +1,236 @@
+[gd_scene load_steps=11 format=3 uid="uid://b8oe0wpm8ta4g"]
+
+[ext_resource type="Texture2D" uid="uid://8mweimtvlsx1" path="res://UI/Inventory/InventoryRect.png" id="1_gehf4"]
+[ext_resource type="PackedScene" uid="uid://l356ct4s8f3k" path="res://UI/Inventory/slot.tscn" id="1_x0xwu"]
+[ext_resource type="Texture2D" uid="uid://drkygrplx4afy" path="res://Items/Custom/Sprites/iron.png" id="3_g3qy6"]
+[ext_resource type="Texture2D" uid="uid://u78i77g0gulp" path="res://Items/Custom/Sprites/wood.png" id="4_77td0"]
+[ext_resource type="Texture2D" uid="uid://n24qi61a5guk" path="res://Items/Custom/Sprites/food.png" id="5_sall6"]
+[ext_resource type="PackedScene" uid="uid://bburqrhvemc26" path="res://UI/Inventory/craft_select.tscn" id="6_em7hk"]
+[ext_resource type="Script" path="res://UI/Inventory/Craft.gd" id="6_ogpl1"]
+[ext_resource type="Texture2D" uid="uid://duc4tu783fcse" path="res://Items/Custom/Sprites/wood_sword.png" id="8_muecw"]
+[ext_resource type="Texture2D" uid="uid://cyf3ifq3mlcnp" path="res://Items/Custom/Sprites/wood_armor.png" id="9_0g25m"]
+[ext_resource type="Texture2D" uid="uid://daqi0p80r367o" path="res://Items/Custom/Sprites/meal.png" id="10_yd7fj"]
+
+[node name="InventoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 424.0
+offset_top = 214.0
+offset_right = -452.0
+offset_bottom = -229.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 737.0
+offset_bottom = 408.0
+texture = ExtResource("1_gehf4")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Slot3" parent="NinePatchRect" instance=ExtResource("1_x0xwu")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.118
+anchor_top = 0.178
+anchor_right = 0.118
+anchor_bottom = 0.178
+offset_left = -110.966
+offset_top = -76.624
+offset_right = -110.966
+offset_bottom = -76.624
+
+[node name="background" parent="NinePatchRect/Slot3" index="0"]
+position = Vector2(132, 83)
+scale = Vector2(5.75, 5.55)
+
+[node name="CenterContainer" parent="NinePatchRect/Slot3" index="1"]
+offset_left = 80.0
+offset_top = 31.0
+offset_right = 185.0
+offset_bottom = 134.0
+
+[node name="item" parent="NinePatchRect/Slot3/CenterContainer/Panel" index="0"]
+position = Vector2(5, -12)
+scale = Vector2(2.5, 2.1875)
+texture = ExtResource("3_g3qy6")
+
+[node name="Label" parent="NinePatchRect/Slot3/CenterContainer/Panel" index="1"]
+text = "12"
+
+[node name="Slot4" parent="NinePatchRect" instance=ExtResource("1_x0xwu")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.126
+anchor_top = 0.401
+anchor_right = 0.126
+anchor_bottom = 0.401
+offset_left = -116.862
+offset_top = -167.608
+offset_right = -116.862
+offset_bottom = -167.608
+
+[node name="background" parent="NinePatchRect/Slot4" index="0"]
+position = Vector2(133.5, 206.5)
+scale = Vector2(5.75, 5.55)
+
+[node name="CenterContainer" parent="NinePatchRect/Slot4" index="1"]
+offset_left = 81.5
+offset_top = 154.5
+offset_right = 186.5
+offset_bottom = 257.5
+
+[node name="item" parent="NinePatchRect/Slot4/CenterContainer/Panel" index="0"]
+position = Vector2(1.5, -11.5)
+scale = Vector2(2.40625, 2.28125)
+texture = ExtResource("4_77td0")
+
+[node name="Label" parent="NinePatchRect/Slot4/CenterContainer/Panel" index="1"]
+text = "4"
+
+[node name="Slot5" parent="NinePatchRect" instance=ExtResource("1_x0xwu")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.124
+anchor_top = 0.709
+anchor_right = 0.124
+anchor_bottom = 0.709
+offset_left = -115.388
+offset_top = -293.272
+offset_right = -115.388
+offset_bottom = -293.272
+
+[node name="background" parent="NinePatchRect/Slot5" index="0"]
+position = Vector2(132.5, 333.5)
+scale = Vector2(5.75, 5.55)
+
+[node name="CenterContainer" parent="NinePatchRect/Slot5" index="1"]
+offset_left = 80.5
+offset_top = 281.5
+offset_right = 185.5
+offset_bottom = 384.5
+
+[node name="item" parent="NinePatchRect/Slot5/CenterContainer/Panel" index="0"]
+position = Vector2(1.5, -7.5)
+scale = Vector2(2.26563, 2.23438)
+texture = ExtResource("5_sall6")
+
+[node name="Label" parent="NinePatchRect/Slot5/CenterContainer/Panel" index="1"]
+text = "2"
+
+[node name="Craft" type="Button" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.848
+anchor_top = 1.115
+anchor_right = 0.848
+anchor_bottom = 1.115
+offset_left = -105.976
+offset_top = -30.92
+offset_right = 106.024
+offset_bottom = 31.08
+text = "craft"
+script = ExtResource("6_ogpl1")
+
+[node name="craft_select" parent="NinePatchRect" node_paths=PackedStringArray("craft_1", "craft_2") instance=ExtResource("6_em7hk")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 277.0
+offset_top = 30.0
+offset_right = 702.0
+offset_bottom = 129.0
+grow_horizontal = 1
+grow_vertical = 1
+craft_1 = NodePath("../craft_select2")
+craft_2 = NodePath("../craft_select3")
+
+[node name="background" parent="NinePatchRect/craft_select" index="0"]
+position = Vector2(213.5, 47.25)
+scale = Vector2(21.25, 5.275)
+
+[node name="item" parent="NinePatchRect/craft_select/CenterContainer/Panel" index="0"]
+position = Vector2(314, 38)
+scale = Vector2(2.85938, 2.1875)
+texture = ExtResource("8_muecw")
+
+[node name="Label" parent="NinePatchRect/craft_select/CenterContainer/Panel" index="1"]
+offset_left = 40.0
+offset_top = 19.0
+offset_right = 176.0
+offset_bottom = 68.0
+
+[node name="craft_select2" parent="NinePatchRect" node_paths=PackedStringArray("craft_1", "craft_2") instance=ExtResource("6_em7hk")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 279.0
+offset_top = 156.0
+offset_right = 704.0
+offset_bottom = 255.0
+grow_horizontal = 1
+grow_vertical = 1
+craft_1 = NodePath("../craft_select")
+craft_2 = NodePath("../craft_select3")
+
+[node name="background" parent="NinePatchRect/craft_select2" index="0"]
+position = Vector2(213.5, 47.25)
+scale = Vector2(21.25, 5.275)
+
+[node name="item" parent="NinePatchRect/craft_select2/CenterContainer/Panel" index="0"]
+position = Vector2(314, 38)
+scale = Vector2(2.85938, 2.1875)
+texture = ExtResource("9_0g25m")
+
+[node name="Label" parent="NinePatchRect/craft_select2/CenterContainer/Panel" index="1"]
+offset_left = 40.0
+offset_top = 19.0
+offset_right = 176.0
+offset_bottom = 68.0
+
+[node name="craft_select3" parent="NinePatchRect" node_paths=PackedStringArray("craft_1", "craft_2") instance=ExtResource("6_em7hk")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 278.0
+offset_top = 283.0
+offset_right = 703.0
+offset_bottom = 382.0
+grow_horizontal = 1
+grow_vertical = 1
+craft_1 = NodePath("../craft_select")
+craft_2 = NodePath("../craft_select2")
+
+[node name="background" parent="NinePatchRect/craft_select3" index="0"]
+position = Vector2(213.5, 47.25)
+scale = Vector2(21.25, 5.275)
+
+[node name="item" parent="NinePatchRect/craft_select3/CenterContainer/Panel" index="0"]
+position = Vector2(314, 38)
+scale = Vector2(2.85938, 2.1875)
+texture = ExtResource("10_yd7fj")
+
+[node name="Label" parent="NinePatchRect/craft_select3/CenterContainer/Panel" index="1"]
+offset_left = 40.0
+offset_top = 19.0
+offset_right = 176.0
+offset_bottom = 68.0
+
+[connection signal="pressed" from="NinePatchRect/Craft" to="NinePatchRect/craft_select" method="_on_craft_pressed"]
+[connection signal="pressed" from="NinePatchRect/Craft" to="NinePatchRect/craft_select2" method="_on_craft_pressed"]
+[connection signal="pressed" from="NinePatchRect/Craft" to="NinePatchRect/craft_select3" method="_on_craft_pressed"]
+
+[editable path="NinePatchRect/Slot3"]
+[editable path="NinePatchRect/Slot4"]
+[editable path="NinePatchRect/Slot5"]
+[editable path="NinePatchRect/craft_select"]
+[editable path="NinePatchRect/craft_select2"]
+[editable path="NinePatchRect/craft_select3"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://diq8kn6qq2kn3"]
+
+[ext_resource type="Texture2D" uid="uid://c14y2e3rbh6ck" path="res://uvod1.png" id="1_pys52"]
+[ext_resource type="Script" path="res://Sprite2D.gd" id="2_vaddc"]
+
+[node name="Sprite2D" type="Sprite2D"]
+position = Vector2(808, 421.5)
+scale = Vector2(0.847917, 0.791667)
+texture = ExtResource("1_pys52")
+script = ExtResource("2_vaddc")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
